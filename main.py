@@ -4,8 +4,6 @@ from scipy.io.wavfile import write
 import re, queue, sys, tempfile, numpy, threading
 from os import system, path, remove, listdir
 
-assert numpy
-
 TRANSCRIPT = "transcript.txt"
 AUDIO_PATH = "wavs"
 TEXT_FILE = path.join("text", "natgeo.txt")
@@ -113,11 +111,12 @@ for i in range(startIndex, len(sentences)):
 
     except KeyboardInterrupt:
         print("\n\n[!] Exiting...\n")
-
-        purgeShort()
         
         running.clear()
         t.join()
+
+        purgeShort()
+        
         break
 
 transcript.close()
